@@ -1,4 +1,4 @@
-# Zenith.dev - Modern Digital Solutions Website
+# Zenith dev8 - Modern Digital Solutions Website
 
 ![Zenith.dev](https://i.pinimg.com/736x/b7/31/08/b731088b99a11c309365250f2f0db42d.jpg)
 
