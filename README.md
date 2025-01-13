@@ -1,54 +1,132 @@
-# Astro Starter Kit: Basics
+# Zenith.dev - Modern Digital Solutions Website
 
-```sh
-npm create astro@latest -- --template basics
+![Zenith.dev](https://i.pinimg.com/736x/b7/31/08/b731088b99a11c309365250f2f0db42d.jpg)
+
+A modern, responsive website built with Astro and TailwindCSS for a digital solutions company. Features a beautiful UI, smooth animations, and multilingual support.
+
+## 🚀 Features
+
+- ⚡️ **Lightning Fast**: Built with Astro for optimal performance
+- 🎨 **Modern Design**: Sleek UI with smooth animations and transitions
+- 📱 **Fully Responsive**: Works perfectly on all devices
+- 🌐 **Multilingual**: Support for English and Spanish
+- 🎯 **SEO Optimized**: Built-in SEO best practices
+- 🔥 **Performance Optimized**: Lazy loading, image optimization, and more
+- 🎨 **TailwindCSS**: For rapid UI development
+- 🌙 **Smooth Animations**: Carefully crafted animations and transitions
+
+## 🛠️ Tech Stack
+
+- [Astro](https://astro.build)
+- [TailwindCSS](https://tailwindcss.com)
+- [TypeScript](https://www.typescriptlang.org)
+- [nanostores](https://github.com/nanostores/nanostores)
+
+## 📦 Project Structure
+
 ```
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
 /
 ├── public/
-│   └── favicon.svg
+│   ├── favicon.svg
+│   └── tech/          # Technology icons
 ├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
+│   ├── components/    # UI components
+│   ├── i18n/         # Translations
+│   ├── layouts/      # Page layouts
+│   ├── pages/        # Page components
+│   └── store/        # State management
 └── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 🚀 Getting Started
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+1. **Clone the repository**
 
-Any static assets, like images, can be placed in the `public/` directory.
+```bash
+git clone https://github.com/yourusername/zenith-dev.git
+cd zenith-dev
+```
 
-## 🧞 Commands
+2. **Install dependencies**
 
-All commands are run from the root of the project, from a terminal:
+```bash
+npm install
+```
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+3. **Start development server**
 
-## 👀 Want to learn more?
+```bash
+npm run dev
+```
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+4. **Build for production**
+
+```bash
+npm run build
+```
+
+5. **Preview production build**
+
+```bash
+npm run preview
+```
+
+## 🎨 Customization
+
+### Colors
+
+The main colors can be customized in `tailwind.config.mjs`:
+
+```js
+colors: {
+  primary: '#7C3AED',
+  secondary: '#F472B6'
+}
+```
+
+### Content
+
+Update the content in:
+- `src/i18n/translations.ts` for multilingual content
+- Individual component files in `src/components/`
+
+## 📱 Components
+
+- `Hero`: Main landing section
+- `Services`: Services showcase
+- `WhyUs`: Company benefits
+- `TechStack`: Technology showcase
+- `Pricing`: Pricing plans
+- `FAQ`: Frequently asked questions
+- `ReadyToStart`: Call to action section
+- `Footer`: Site footer with contact info
+
+## 🌐 Multilingual Support
+
+The site supports multiple languages through the `translations.ts` file. To add a new language:
+
+1. Add translations to `src/i18n/translations.ts`
+2. Update the language selector in `Navbar.astro`
+
+## 🎯 Performance Optimizations
+
+- Font preloading
+- Image optimization
+- Lazy loading
+- Code splitting
+- CSS optimization
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/yourusername/zenith-dev/issues).
+
+## 📧 Contact
+
+- Email: zenithdev8@gmail.com
+- Twitter: [@zenithdev38311](https://twitter.com/zenithdev38311)
+- Facebook: [ZENlTHDEV](https://www.facebook.com/ZENlTHDEV/)
+- Instagram: [@zenithdev8](https://www.instagram.com/zenithdev8/)
