@@ -1,0 +1,112 @@
+---
+const plans = [
+  {
+    name: "Basic",
+    price: "999",
+    description: "Perfect for small businesses and startups",
+    features: [
+      "Custom Website Design",
+      "Mobile Responsive",
+      "5 Pages",
+      "Contact Form",
+      "Basic SEO",
+      "3 Months Support",
+      "Email Support"
+    ]
+  },
+  {
+    name: "Professional",
+    price: "1,999",
+    description: "Ideal for growing businesses",
+    features: [
+      "Everything in Basic",
+      "E-commerce Integration",
+      "10 Pages",
+      "Blog Setup",
+      "Advanced SEO",
+      "6 Months Support",
+      "Performance Optimization"
+    ]
+  },
+  {
+    name: "Enterprise",
+    price: "Custom",
+    description: "For large-scale projects",
+    features: [
+      "Everything in Professional",
+      "Custom Functionality",
+      "Unlimited Pages",
+      "Priority Support",
+      "Custom Integrations",
+      "1 Year Support",
+      "Weekly Backups"
+    ]
+  }
+];
+---
+
+<section class="py-24 bg-gray-50" id="pricing">
+  <div class="container mx-auto px-4">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <h2 class="text-4xl font-bold mb-4">Simple, Transparent Pricing</h2>
+      <p class="text-gray-600">Choose the perfect plan for your needs. No hidden fees, no surprises.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+      {plans.map((plan, index) => (
+        <div class="pricing-card group relative bg-white rounded-2xl p-8 flex flex-col">
+          <div class="text-center mb-8">
+            <h3 class="text-2xl font-bold mb-2 group-hover:text-primary transition-colors">{plan.name}</h3>
+            <p class="text-gray-600 mb-4">{plan.description}</p>
+            <div class="flex items-baseline justify-center gap-1">
+              <span class="text-4xl font-bold">${plan.price}</span>
+              {plan.price !== "Custom" && <span class="text-gray-600">/project</span>}
+            </div>
+          </div>
+
+          <ul class="space-y-4 mb-8">
+            {plan.features.map((feature) => (
+              <li class="flex items-center gap-3">
+                <svg class="w-5 h-5 text-primary flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                </svg>
+                <span class="text-gray-600">{feature}</span>
+              </li>
+            ))}
+          </ul>
+
+          <a
+            href="#contact"
+            class="group relative inline-flex items-center justify-center gap-2 bg-[#C4B5FD] hover:bg-[#C4B5FD]/90 text-black px-6 py-3 rounded-full overflow-hidden transition-all duration-300 hover:pl-4 hover:pr-8 mt-auto"
+          >
+            <span class="relative z-10">Get Started</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transform group-hover:translate-x-1 transition-transform absolute right-4 opacity-0 group-hover:opacity-100" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+            </svg>
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .container {
+    max-width: 1280px;
+  }
+
+  .pricing-card {
+    transition: all 0.3s ease;
+  }
+
+  .pricing-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+
+  @media (max-width: 768px) {
+    .pricing-card {
+      transform: none !important;
+    }
+  }
+</style>

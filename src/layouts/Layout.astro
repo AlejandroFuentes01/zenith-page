@@ -1,0 +1,433 @@
+---
+interface Props {
+	title: string;
+	description?: string;
+	image?: string;
+}
+
+const {
+	title,
+	description = "Transforming ideas into exceptional digital experiences. Expert web development, mobile apps, and digital solutions for your business.",
+	image = "https://i.pinimg.com/736x/b7/31/08/b731088b99a11c309365250f2f0db42d.jpg",
+} = Astro.props;
+
+const canonicalURL = new URL(
+	Astro.url.pathname,
+	Astro.site || "https://zenith.dev",
+);
+---
+
+<!doctype html>
+<html lang="en" class="font-sans">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+
+		<!-- Preload Poppins font -->
+		<link
+			rel="preload"
+			href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+			as="style"
+			crossorigin
+		/>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+			rel="stylesheet"
+			crossorigin
+		/>
+
+		<!-- SEO Tags -->
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<link rel="canonical" href={canonicalURL} />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={image} />
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={canonicalURL} />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content={image} />
+
+		<!-- Preconnect to external domains -->
+		<link
+			rel="preconnect"
+			href="https://fonts.googleapis.com"
+			crossorigin
+		/>
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link rel="preconnect" href="https://i.pinimg.com" crossorigin />
+
+		<style is:inline>
+			/* Ensure Poppins is applied before the font loads */
+			body {
+				font-family:
+					"Poppins",
+					system-ui,
+					-apple-system,
+					BlinkMacSystemFont,
+					"Segoe UI",
+					Roboto,
+					Oxygen,
+					Ubuntu,
+					Cantarell,
+					"Open Sans",
+					"Helvetica Neue",
+					sans-serif;
+			}
+		</style>
+	</head>
+	<body class="font-sans">
+		<slot />
+
+		<button
+			id="scroll-to-top"
+			class="fixed bottom-8 right-8 bg-[#C4B5FD] hover:bg-[#C4B5FD]/90 text-black p-4 rounded-full shadow-lg transform translate-y-20 opacity-0 transition-all duration-300 z-50"
+			aria-label="Volver arriba"
+		>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				class="h-6 w-6"
+				fill="none"
+				viewBox="0 0 24 24"
+				stroke="currentColor"
+			>
+				<path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					stroke-width="2"
+					d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+			</svg>
+		</button>
+
+		<script>
+			// Función para observar las secciones
+			const observeSections = () => {
+				const sections = document.querySelectorAll("section");
+
+				const observer = new IntersectionObserver(
+					(entries) => {
+						entries.forEach((entry) => {
+							if (entry.isIntersecting) {
+								entry.target.classList.add("section-visible");
+
+								// Añadir clases específicas para diferentes tipos de secciones
+								if (
+									entry.target.querySelector(".service-card")
+								) {
+									entry.target.classList.add(
+										"services-visible",
+									);
+								}
+								if (
+									entry.target.querySelector(".pricing-card")
+								) {
+									entry.target.classList.add(
+										"pricing-visible",
+									);
+								}
+								if (entry.target.querySelector(".faq-item")) {
+									entry.target.classList.add("faq-visible");
+								}
+								if (entry.target.querySelector(".tech-card")) {
+									entry.target.classList.add("tech-visible");
+								}
+								if (
+									entry.target.querySelector(".feature-card")
+								) {
+									entry.target.classList.add(
+										"features-visible",
+									);
+								}
+							}
+						});
+					},
+					{
+						threshold: 0.1,
+					},
+				);
+
+				sections.forEach((section) => {
+					section.classList.add("section-hidden");
+					// Añadir clases ocultas específicas
+					if (section.querySelector(".service-card")) {
+						section.classList.add("services-hidden");
+					}
+					if (section.querySelector(".pricing-card")) {
+						section.classList.add("pricing-hidden");
+					}
+					if (section.querySelector(".faq-item")) {
+						section.classList.add("faq-hidden");
+					}
+					if (section.querySelector(".tech-card")) {
+						section.classList.add("tech-hidden");
+					}
+					if (section.querySelector(".feature-card")) {
+						section.classList.add("features-hidden");
+					}
+					observer.observe(section);
+				});
+			};
+
+			// Función para manejar el botón de volver arriba
+			const handleScrollToTop = () => {
+				const scrollButton = document.getElementById("scroll-to-top");
+				if (!scrollButton) return;
+
+				// Mostrar/ocultar botón basado en la posición del scroll
+				const toggleButton = () => {
+					if (window.scrollY > 500) {
+						scrollButton.classList.remove(
+							"translate-y-20",
+							"opacity-0",
+						);
+					} else {
+						scrollButton.classList.add(
+							"translate-y-20",
+							"opacity-0",
+						);
+					}
+				};
+
+				// Manejar el click del botón
+				scrollButton.addEventListener("click", () => {
+					window.scrollTo({
+						top: 0,
+						behavior: "smooth",
+					});
+				});
+
+				// Escuchar el evento scroll
+				window.addEventListener("scroll", toggleButton);
+
+				// Verificar posición inicial
+				toggleButton();
+			};
+
+			// Función para manejar el scroll suave en los enlaces
+			const handleSmoothScroll = () => {
+				document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+					anchor.addEventListener("click", function (e) {
+						e.preventDefault();
+						const href = this.getAttribute("href");
+						if (!href) return;
+
+						const target = document.querySelector(href);
+						if (!target) return;
+
+						// Ajustar el scroll considerando la altura del navbar
+						const navbarHeight =
+							document.querySelector("nav")?.offsetHeight || 0;
+						const targetPosition =
+							target.getBoundingClientRect().top +
+							window.pageYOffset -
+							navbarHeight;
+
+						window.scrollTo({
+							top: targetPosition,
+							behavior: "smooth",
+						});
+					});
+				});
+			};
+
+			// Ejecutar cuando el DOM esté listo
+			document.addEventListener("DOMContentLoaded", () => {
+				observeSections();
+				handleScrollToTop();
+				handleSmoothScroll();
+			});
+		</script>
+	</body>
+</html>
+
+<style is:global>
+	:root {
+		--accent: 124, 58, 237;
+		--accent-gradient: linear-gradient(
+			45deg,
+			rgb(var(--accent)),
+			#da62c4 30%,
+			white 60%
+		);
+	}
+	html {
+		font-family: "Poppins", sans-serif;
+		background-color: #ffffff;
+		scroll-behavior: smooth;
+	}
+
+	/* Custom Scrollbar Styles */
+	::-webkit-scrollbar {
+		width: 12px;
+	}
+
+	::-webkit-scrollbar-track {
+		background: #f1f1f1;
+		border-radius: 6px;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background: #c4b5fd;
+		border-radius: 6px;
+		border: 3px solid #f1f1f1;
+	}
+
+	::-webkit-scrollbar-thumb:hover {
+		background: #a78bfa;
+	}
+
+	/* Firefox */
+	* {
+		scrollbar-width: thin;
+		scrollbar-color: #c4b5fd #f1f1f1;
+	}
+
+	/* Hover effect for scroll to top button */
+	#scroll-to-top {
+		transition: all 0.3s ease;
+	}
+
+	#scroll-to-top:hover {
+		transform: translateY(0) scale(1.1);
+	}
+
+	#scroll-to-top:active {
+		transform: translateY(0) scale(0.95);
+	}
+
+	/* Base section animation */
+	.section-hidden {
+		opacity: 0;
+		transform: translateY(30px);
+		transition: all 0.8s ease-out;
+	}
+
+	.section-visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	/* Services section animation */
+	.services-hidden .service-card {
+		opacity: 0;
+		transform: translateX(-50px);
+		transition: all 0.6s ease-out;
+	}
+
+	.services-visible .service-card {
+		opacity: 1;
+		transform: translateX(0);
+	}
+
+	.services-visible .service-card:nth-child(2) {
+		transition-delay: 0.2s;
+	}
+
+	.services-visible .service-card:nth-child(3) {
+		transition-delay: 0.4s;
+	}
+
+	.services-visible .service-card:nth-child(4) {
+		transition-delay: 0.6s;
+	}
+
+	/* Pricing section animation */
+	.pricing-hidden .pricing-card {
+		opacity: 0;
+		transform: translateY(50px) scale(0.9);
+		transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	.pricing-visible .pricing-card {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+
+	.pricing-visible .pricing-card:nth-child(2) {
+		transition-delay: 0.2s;
+	}
+
+	.pricing-visible .pricing-card:nth-child(3) {
+		transition-delay: 0.4s;
+	}
+
+	/* FAQ section animation */
+	.faq-hidden .faq-item {
+		opacity: 0;
+		transform: translateX(30px);
+		transition: all 0.5s ease-out;
+	}
+
+	.faq-visible .faq-item {
+		opacity: 1;
+		transform: translateX(0);
+	}
+
+	.faq-visible .faq-item:nth-child(odd) {
+		transition-delay: 0.2s;
+	}
+
+	.faq-visible .faq-item:nth-child(even) {
+		transition-delay: 0.3s;
+	}
+
+	/* Tech stack animation */
+	.tech-hidden .tech-card {
+		opacity: 0;
+		transform: translateY(20px) scale(0.95);
+		transition: all 0.4s ease-out;
+	}
+
+	.tech-visible .tech-card {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+
+	/* Features section animation */
+	.features-hidden .feature-card {
+		opacity: 0;
+		transform: translateY(30px) rotate(-2deg);
+		transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	.features-visible .feature-card {
+		opacity: 1;
+		transform: translateY(0) rotate(0);
+	}
+
+	.features-visible .feature-card:nth-child(2) {
+		transition-delay: 0.15s;
+	}
+
+	.features-visible .feature-card:nth-child(3) {
+		transition-delay: 0.3s;
+	}
+
+	.features-visible .feature-card:nth-child(4) {
+		transition-delay: 0.45s;
+	}
+
+	/* Disable animations if user prefers reduced motion */
+	@media (prefers-reduced-motion: reduce) {
+		.section-hidden,
+		.services-hidden .service-card,
+		.pricing-hidden .pricing-card,
+		.faq-hidden .faq-item,
+		.tech-hidden .tech-card,
+		.features-hidden .feature-card {
+			transition: none;
+			transform: none;
+			opacity: 1;
+		}
+	}
+</style>

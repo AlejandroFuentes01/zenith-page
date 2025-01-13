@@ -1,0 +1,41 @@
+---
+import FAQ from '../components/FAQ.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import Navbar from '../components/Navbar.astro';
+import Pricing from '../components/Pricing.astro';
+import ReadyToStart from '../components/ReadyToStart.astro';
+import Services from '../components/Services.astro';
+import TechStack from '../components/TechStack.astro';
+import WhyUs from '../components/WhyUs.astro';
+import Layout from '../layouts/Layout.astro';
+
+// SEO metadata
+const title = "Digital Solutions & Custom Software Development";
+const description = "Transform your business with our expert web development, mobile apps, and digital solutions. Get cutting-edge technology and exceptional results with Zenith.dev.";
+const image = "https://i.pinimg.com/736x/b7/31/08/b731088b99a11c309365250f2f0db42d.jpg";
+---
+
+<Layout 
+  title={title}
+  description={description}
+  image={image}
+>
+  <Navbar />
+  <main>
+    <Hero />
+    <Services />
+    <WhyUs />
+    <TechStack />
+    <Pricing />
+    <FAQ />
+    <ReadyToStart />
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  main {
+    width: 100%;
+  }
+</style>

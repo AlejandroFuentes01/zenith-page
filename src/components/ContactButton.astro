@@ -1,0 +1,61 @@
+---
+// ContactButton.astro
+---
+
+<button class="contact-button">
+  <span class="text-container">
+    Contact Us
+  </span>
+  <span class="arrow-circle">
+    <svg 
+      xmlns="http://www.w3.org/2000/svg" 
+      width="20" 
+      height="20" 
+      viewBox="0 0 24 24" 
+      fill="none" 
+      stroke="currentColor" 
+      stroke-width="2"
+      stroke-linecap="round" 
+      stroke-linejoin="round"
+    >
+      <line x1="7" y1="17" x2="17" y2="7"></line>
+      <polyline points="7 7 17 7 17 17"></polyline>
+    </svg>
+  </span>
+</button>
+
+<style>
+  .contact-button {
+    display: flex;
+    align-items: center;
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  .text-container {
+    background-color: #E4D5F7;
+    color: #000;
+    padding: 12px 24px;
+    border-radius: 9999px;
+    font-size: 16px;
+    transition: background-color 0.2s ease;
+  }
+
+  .arrow-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #E4D5F7;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    transition: background-color 0.2s ease;
+  }
+
+  .contact-button:hover .text-container,
+  .contact-button:hover .arrow-circle {
+    background-color: #D6C2F2;
+  }
+</style>

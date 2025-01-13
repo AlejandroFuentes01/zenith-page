@@ -1,0 +1,194 @@
+---
+const faqs = [
+  {
+    question: "What services do you offer?",
+    answer: "We offer a comprehensive range of digital solutions including custom web development, mobile app development, UI/UX design, and full-stack development. Our services are tailored to meet both small business needs and enterprise-level requirements."
+  },
+  {
+    question: "How long does it take to complete a project?",
+    answer: "Project timelines vary depending on complexity and scope. A simple website might take 2-4 weeks, while a complex web application could take 3-6 months. We'll provide a detailed timeline during our initial consultation based on your specific requirements."
+  },
+  {
+    question: "Do you provide ongoing support after project completion?",
+    answer: "Yes, we offer various support and maintenance packages to ensure your digital solution continues to perform optimally. Our support includes bug fixes, security updates, and technical assistance, with response times based on your chosen support tier."
+  },
+  {
+    question: "What is your pricing structure?",
+    answer: "Our pricing is project-based and transparent. We offer three main tiers: Basic ($999), Professional ($1,999), and Enterprise (custom pricing). Each package includes different features and service levels to match your needs and budget."
+  },
+  {
+    question: "Can you help with existing projects or only new ones?",
+    answer: "We work with both new projects and existing ones. Our team is experienced in taking over ongoing projects, performing code audits, and implementing improvements while maintaining existing functionality."
+  },
+  {
+    question: "What technologies do you specialize in?",
+    answer: "We specialize in modern web technologies including React, Node.js, Python, and mobile development frameworks like React Native. We stay current with industry trends to provide the most effective solutions for our clients."
+  }
+];
+---
+
+<section class="py-24 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <h2 class="text-4xl font-bold mb-4 text-gray-900">Frequently Asked Questions</h2>
+      <p class="text-gray-600">Find answers to common questions about our services and process</p>
+    </div>
+
+    <div class="max-w-3xl mx-auto space-y-4">
+      {faqs.map((faq, index) => (
+        <div class="faq-item">
+          <details class="group">
+            <summary class="faq-summary">
+              <h3 class="text-base sm:text-lg font-medium pr-6 text-gray-900">{faq.question}</h3>
+              <span class="faq-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
+            </summary>
+            <div class="faq-content">
+              <p class="text-gray-600">{faq.answer}</p>
+            </div>
+          </details>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .container {
+    max-width: 1280px;
+  }
+
+  .faq-item {
+    background: white;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+  }
+
+  .faq-item:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    transform: translateY(-2px);
+  }
+
+  details {
+    transition: all 0.3s ease;
+  }
+
+  .faq-summary {
+    list-style: none;
+    padding: 1.5rem;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    transition: all 0.3s ease;
+  }
+
+  .faq-summary:hover {
+    background: linear-gradient(to right, #f8fafc, white);
+  }
+
+  .faq-summary:focus {
+    outline: none;
+    background: linear-gradient(to right, #f8fafc, white);
+  }
+
+  .faq-summary::marker,
+  .faq-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-icon {
+    color: #7C3AED;
+    transition: transform 0.3s ease;
+  }
+
+  details[open] .faq-icon {
+    transform: rotate(180deg);
+  }
+
+  .faq-content {
+    padding: 0 1.5rem 1.5rem;
+    border-top: 1px solid #e5e7eb;
+    margin-top: -1px;
+    background: white;
+    animation: slideDown 0.3s ease-out;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Responsive styles */
+  @media (max-width: 640px) {
+    .faq-summary {
+      padding: 1.25rem;
+    }
+
+    .faq-content {
+      padding: 0 1.25rem 1.25rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .faq-summary {
+      padding: 1rem;
+    }
+
+    .faq-content {
+      padding: 0 1rem 1rem;
+    }
+
+    h2 {
+      font-size: 1.75rem;
+    }
+  }
+
+  /* Hover and focus states */
+  .faq-item:focus-within {
+    outline: 2px solid #7C3AED;
+    outline-offset: 2px;
+  }
+
+  details[open] .faq-summary {
+    background: white;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  /* Smooth transitions */
+  .faq-summary h3 {
+    transition: color 0.3s ease;
+  }
+
+  .faq-summary:hover h3 {
+    color: #7C3AED;
+  }
+
+  /* Accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    .faq-item,
+    .faq-summary,
+    .faq-icon,
+    .faq-content {
+      transition: none;
+      animation: none;
+    }
+  }
+</style>

@@ -1,0 +1,38 @@
+<script>
+  const slider = document.getElementById('testimonials-slider');
+  const container = document.getElementById('testimonials-container');
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+  
+  let currentIndex = 0;
+  
+  function updateSlider() {
+    if (!slider || !container) return;
+    const slideWidth = container.clientWidth;
+    const isMobile = window.innerWidth < 768;
+    const transitionDuration = isMobile ? '0.3s' : '0.5s';
+    slider.style.transition = `transform ${transitionDuration} ease-in-out`;
+    slider.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+  }
+
+  prevBtn?.addEventListener('click', () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+      updateSlider();
+    }
+  });
+
+  nextBtn?.addEventListener('click', () => {
+    const maxIndex = slider?.children.length ? Math.ceil(slider.children.length / 3) - 1 : 0;
+    if (currentIndex < maxIndex) {
+      currentIndex++;
+      updateSlider();
+    }
+  });
+
+  // Handle window resize
+  window.addEventListener('resize', updateSlider);
+
+  // Initial position
+  updateSlider();
+</script>
