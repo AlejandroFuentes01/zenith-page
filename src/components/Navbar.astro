@@ -10,11 +10,10 @@ const menuItems = [
 ];
 
 const currentPath = Astro.url.pathname;
-const isHomePage = currentPath === "/";
 ---
 
-<nav class="fixed w-full z-[100] py-6 transition-all duration-300 bg-white/95 backdrop-blur-sm shadow-sm" id="navbar">
-  <div class="container mx-auto px-4 flex justify-between items-center font-['Poppins']">
+<nav class="fixed w-full z-[100] py-6 bg-white shadow-sm" id="navbar">
+  <div class="container mx-auto px-4 flex justify-between items-center">
     <a href="/" class="flex items-center gap-1 relative z-[110]">
       <span class="text-3xl font-bold tracking-tight">Z</span>
       <span class="text-base font-bold tracking-tight">enith.dev</span>
@@ -34,27 +33,24 @@ const isHomePage = currentPath === "/";
 
       {/* Language Selector */}
       <div class="relative group">
-        <button class="flex items-center gap-2 text-gray-600 hover:text-primary transition-colors">
+        <button class="flex items-center gap-2 text-gray-600 hover:text-primary">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
           </svg>
           <span id="current-language">EN</span>
         </button>
         <div class="absolute right-0 mt-2 py-2 w-24 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-          <button class="w-full px-4 py-2 text-left text-gray-600 hover:text-primary hover:bg-gray-50 transition-colors language-option" data-lang="en">
+          <button class="w-full px-4 py-2 text-left text-gray-600 hover:text-primary hover:bg-gray-50 language-option" data-lang="en">
             English
           </button>
-          <button class="w-full px-4 py-2 text-left text-gray-600 hover:text-primary hover:bg-gray-50 transition-colors language-option" data-lang="es">
+          <button class="w-full px-4 py-2 text-left text-gray-600 hover:text-primary hover:bg-gray-50 language-option" data-lang="es">
             Español
           </button>
         </div>
       </div>
 
-      <a href="/contact" class="group relative inline-flex items-center gap-2 bg-[#C4B5FD] hover:bg-[#C4B5FD]/90 text-black px-6 py-2.5 rounded-full transition-all duration-300 nav-link" data-key="contact">
-        <span>{translations.en.nav.contact}</span>
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transform transition-all duration-300 group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-        </svg>
+      <a href="/contact" class="bg-[#C4B5FD] hover:bg-[#C4B5FD]/90 text-black px-6 py-2.5 rounded-full transition-colors nav-link" data-key="contact">
+        {translations.en.nav.contact}
       </a>
     </div>
 
@@ -63,7 +59,6 @@ const isHomePage = currentPath === "/";
       id="mobile-menu-button"
       class="md:hidden relative z-[110] p-2 -mr-2 text-gray-600 hover:text-primary transition-colors"
       aria-label="Toggle menu"
-      aria-expanded="false"
     >
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -73,9 +68,9 @@ const isHomePage = currentPath === "/";
     {/* Mobile Menu */}
     <div 
       id="mobile-menu" 
-      class="fixed inset-0 bg-white/95 backdrop-blur-sm transform translate-x-full transition-all duration-300 ease-in-out md:hidden z-[90]"
+      class="fixed inset-0 bg-white transform translate-x-full transition-all duration-300 ease-in-out md:hidden z-[90]"
     >
-      <div class="min-h-screen px-4 pt-28 flex flex-col">
+      <div class="min-h-screen px-4 pt-28 flex flex-col bg-white">
         <div class="flex flex-col space-y-8">
           {menuItems.map(item => (
             <a 
@@ -93,40 +88,24 @@ const isHomePage = currentPath === "/";
           >
             {translations.en.nav.contact}
           </a>
+
+          {/* Mobile Language Selector */}
+          <div class="pt-4 border-t border-gray-100">
+            <p class="text-sm text-gray-500 mb-3">Select Language</p>
+            <div class="flex gap-4">
+              <button class="px-4 py-2 text-sm text-gray-600 hover:text-primary bg-gray-50 rounded-lg language-option" data-lang="en">
+                English
+              </button>
+              <button class="px-4 py-2 text-sm text-gray-600 hover:text-primary bg-gray-50 rounded-lg language-option" data-lang="es">
+                Español
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </nav>
-
-<style>
-  .container {
-    max-width: 1280px;
-  }
-
-  nav {
-    transition: all 0.3s ease;
-    background: rgba(255, 255, 255, 0.98);
-    backdrop-filter: blur(8px);
-  }
-
-  #mobile-menu {
-    visibility: hidden;
-    opacity: 0;
-  }
-
-  #mobile-menu.is-active {
-    transform: translateX(0);
-    visibility: visible;
-    opacity: 1;
-  }
-
-  @media (max-width: 768px) {
-    .nav-blur {
-      backdrop-filter: blur(8px);
-    }
-  }
-</style>
 
 <script>
   import type { Language } from '../i18n/translations';
@@ -136,58 +115,55 @@ import { currentLanguage, setLanguage } from '../store/language';
   function setupMobileMenu() {
     const menuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
-    const navbar = document.getElementById('navbar');
     let isMenuOpen = false;
 
     menuButton?.addEventListener('click', () => {
       isMenuOpen = !isMenuOpen;
       
       if (mobileMenu) {
-        mobileMenu.classList.toggle('is-active');
+        mobileMenu.classList.toggle('translate-x-full');
         document.body.style.overflow = isMenuOpen ? 'hidden' : '';
-      }
-
-      if (navbar) {
-        navbar.classList.toggle('nav-blur', isMenuOpen);
       }
       
       if (menuButton) {
-        menuButton.setAttribute('aria-expanded', isMenuOpen.toString());
         const svg = menuButton.querySelector('svg');
         if (svg) {
-          if (isMenuOpen) {
-            svg.innerHTML = `
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            `;
-          } else {
-            svg.innerHTML = `
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            `;
-          }
+          svg.innerHTML = isMenuOpen 
+            ? '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />'
+            : '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />';
         }
       }
     });
 
-    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+    // Close mobile menu when clicking a link
+    const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+    mobileLinks.forEach(link => {
       link.addEventListener('click', () => {
         isMenuOpen = false;
         if (mobileMenu) {
-          mobileMenu.classList.remove('is-active');
+          mobileMenu.classList.add('translate-x-full');
           document.body.style.overflow = '';
         }
-        if (navbar) {
-          navbar.classList.remove('nav-blur');
-        }
-        if (menuButton) {
-          menuButton.setAttribute('aria-expanded', 'false');
-          const svg = menuButton.querySelector('svg');
-          if (svg) {
-            svg.innerHTML = `
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            `;
-          }
+        const svg = menuButton?.querySelector('svg');
+        if (svg) {
+          svg.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />';
         }
       });
+    });
+
+    // Close menu on window resize if open
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 768 && isMenuOpen) {
+        isMenuOpen = false;
+        if (mobileMenu) {
+          mobileMenu.classList.add('translate-x-full');
+          document.body.style.overflow = '';
+        }
+        const svg = menuButton?.querySelector('svg');
+        if (svg) {
+          svg.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />';
+        }
+      }
     });
   }
 
@@ -195,8 +171,7 @@ import { currentLanguage, setLanguage } from '../store/language';
     const initialLang = (localStorage.getItem('preferred-language') || 'en') as Language;
     updateContent(initialLang);
 
-    const languageOptions = document.querySelectorAll('.language-option');
-    languageOptions.forEach(option => {
+    document.querySelectorAll('.language-option').forEach(option => {
       option.addEventListener('click', (e) => {
         const lang = (e.currentTarget as HTMLElement).getAttribute('data-lang') as Language;
         if (lang) {
@@ -206,24 +181,14 @@ import { currentLanguage, setLanguage } from '../store/language';
       });
     });
 
-    currentLanguage.subscribe(lang => {
-      updateContent(lang);
-    });
+    currentLanguage.subscribe(updateContent);
   }
 
   function updateContent(lang: Language) {
-    const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
-    navLinks.forEach(link => {
+    document.querySelectorAll('.nav-link').forEach(link => {
       const key = link.getAttribute('data-key');
       if (key && translations[lang].nav[key as keyof typeof translations[typeof lang]['nav']]) {
-        const text = translations[lang].nav[key as keyof typeof translations[typeof lang]['nav']];
-        if (text) {
-          if (link.querySelector('span')) {
-            link.querySelector('span')!.textContent = text;
-          } else {
-            link.textContent = text;
-          }
-        }
+        link.textContent = translations[lang].nav[key as keyof typeof translations[typeof lang]['nav']];
       }
     });
 
@@ -233,9 +198,59 @@ import { currentLanguage, setLanguage } from '../store/language';
     }
   }
 
-  // Initialize everything when the DOM is ready
+  // Handle smooth scrolling for anchor links
+  function setupSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const href = this.getAttribute('href');
+        if (!href) return;
+        
+        const target = document.querySelector(href);
+        if (!target) return;
+
+        const navbarHeight = document.querySelector('nav')?.offsetHeight || 0;
+        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      });
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     setupMobileMenu();
     setupLanguageSelector();
+    setupSmoothScroll();
   });
 </script>
+
+<style>
+  .container {
+    max-width: 1280px;
+  }
+
+  /* Navbar shadow and background */
+  nav {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  }
+
+  /* Mobile menu transition */
+  #mobile-menu {
+    transition: transform 0.3s ease-in-out;
+  }
+
+  /* Accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    #mobile-menu {
+      transition: none;
+    }
+  }
+
+  /* Language selector transitions */
+  .group:hover .group-hover\:opacity-100 {
+    transition-delay: 0.1s;
+  }
+</style>
