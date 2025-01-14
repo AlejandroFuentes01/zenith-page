@@ -6,20 +6,44 @@ const technologies = {
     { name: "Angular", icon: "/tech/angular.svg", url: "https://angular.io" },
     { name: "Next.js", icon: "/tech/nextjs.svg", url: "https://nextjs.org" },
     { name: "Node.js", icon: "/tech/nodejs.svg", url: "https://nodejs.org" },
-    { name: "TypeScript", icon: "/tech/typescript.svg", url: "https://www.typescriptlang.org" },
+    {
+      name: "TypeScript",
+      icon: "/tech/typescript.svg",
+      url: "https://www.typescriptlang.org",
+    },
     { name: "Python", icon: "/tech/python.svg", url: "https://www.python.org" },
-    { name: "Django", icon: "/tech/django.svg", url: "https://www.djangoproject.com" }
+    {
+      name: "Django",
+      icon: "/tech/django.svg",
+      url: "https://www.djangoproject.com",
+    },
   ],
   row2: [
-    { name: "TailwindCSS", icon: "/tech/tailwind.svg", url: "https://tailwindcss.com" },
-    { name: "MongoDB", icon: "/tech/mongodb.svg", url: "https://www.mongodb.com" },
-    { name: "PostgreSQL", icon: "/tech/postgresql.svg", url: "https://www.postgresql.org" },
+    {
+      name: "TailwindCSS",
+      icon: "/tech/tailwind.svg",
+      url: "https://tailwindcss.com",
+    },
+    {
+      name: "MongoDB",
+      icon: "/tech/mongodb.svg",
+      url: "https://www.mongodb.com",
+    },
+    {
+      name: "PostgreSQL",
+      icon: "/tech/postgresql.svg",
+      url: "https://www.postgresql.org",
+    },
     { name: "Redis", icon: "/tech/redis.svg", url: "https://redis.io" },
     { name: "Docker", icon: "/tech/docker.svg", url: "https://www.docker.com" },
     { name: "AWS", icon: "/tech/aws.svg", url: "https://aws.amazon.com" },
-    { name: "Firebase", icon: "/tech/firebase.svg", url: "https://firebase.google.com" },
-    { name: "GraphQL", icon: "/tech/graphql.svg", url: "https://graphql.org" }
-  ]
+    {
+      name: "Firebase",
+      icon: "/tech/firebase.svg",
+      url: "https://firebase.google.com",
+    },
+    { name: "GraphQL", icon: "/tech/graphql.svg", url: "https://graphql.org" },
+  ],
 };
 ---
 
@@ -27,48 +51,68 @@ const technologies = {
   <div class="container mx-auto px-4 mb-12">
     <div class="text-center max-w-3xl mx-auto">
       <h2 class="text-4xl font-bold mb-4">Our Tech Stack</h2>
-      <p class="text-gray-600">We use cutting-edge technologies to build powerful solutions</p>
+      <p class="text-gray-600">
+        We use cutting-edge technologies to build powerful solutions
+      </p>
     </div>
   </div>
 
   <div class="relative">
     <!-- First Row - Moving Left -->
     <div class="flex space-x-12 animate-scroll-left">
-      {[...technologies.row1, ...technologies.row1].map((tech) => (
-        <a 
-          href={tech.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="tech-card group"
-        >
-          <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 flex items-center space-x-4 min-w-[200px]">
-            <img src={tech.icon} alt={tech.name} class="w-10 h-10 group-hover:scale-110 transition-transform" />
-            <span class="font-medium text-gray-800">{tech.name}</span>
-          </div>
-        </a>
-      ))}
+      {
+        [...technologies.row1, ...technologies.row1].map((tech) => (
+          <a
+            href={tech.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="tech-card group"
+          >
+            <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 flex items-center space-x-4 min-w-[200px]">
+              <img
+                src={tech.icon}
+                alt={tech.name}
+                class="w-10 h-10 group-hover:scale-110 transition-transform"
+              />
+              <span class="font-medium text-gray-800">{tech.name}</span>
+            </div>
+          </a>
+        ))
+      }
     </div>
 
     <!-- Second Row - Moving Right -->
     <div class="flex space-x-12 mt-8 animate-scroll-right">
-      {[...technologies.row2, ...technologies.row2].map((tech) => (
-        <a 
-          href={tech.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="tech-card group"
-        >
-          <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 flex items-center space-x-4 min-w-[200px]">
-            <img src={tech.icon} alt={tech.name} class="w-10 h-10 group-hover:scale-110 transition-transform" />
-            <span class="font-medium text-gray-800">{tech.name}</span>
-          </div>
-        </a>
-      ))}
+      {
+        [...technologies.row2, ...technologies.row2].map((tech) => (
+          <a
+            href={tech.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="tech-card group"
+          >
+            <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 flex items-center space-x-4 min-w-[200px]">
+              <img
+                src={tech.icon}
+                alt={tech.name}
+                class="w-10 h-10 group-hover:scale-110 transition-transform"
+              />
+              <span class="font-medium text-gray-800">{tech.name}</span>
+            </div>
+          </a>
+        ))
+      }
     </div>
 
     <!-- Gradient Overlays -->
-    <div class="absolute inset-y-0 left-0 w-48 bg-gradient-to-r from-gray-50 to-transparent z-10"></div>
-    <div class="absolute inset-y-0 right-0 w-48 bg-gradient-to-l from-gray-50 to-transparent z-10"></div>
+    <div
+      class="absolute inset-y-0 left-0 w-48 bg-gradient-to-r from-gray-50 to-transparent z-10"
+    >
+    </div>
+    <div
+      class="absolute inset-y-0 right-0 w-48 bg-gradient-to-l from-gray-50 to-transparent z-10"
+    >
+    </div>
   </div>
 </section>
 
