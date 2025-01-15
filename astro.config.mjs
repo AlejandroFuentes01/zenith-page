@@ -3,8 +3,8 @@ import tailwind from '@astrojs/tailwind';
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  output: 'server', // Añadido para habilitar SSR
-  adapter: node({   // Añadido para el adaptador Node
+  output: 'server',
+  adapter: node({
     mode: 'standalone'
   }),
   site: 'https://zenithdev8.vercel.app',
@@ -20,11 +20,11 @@ export default defineConfig({
     },
     domains: ['i.pinimg.com']
   },
-  // Add compression
+  // Modificamos la configuración de Vite
   vite: {
     build: {
       cssCodeSplit: true,
-      minify: 'terser',
+      minify: 'esbuild', // Cambiado de 'terser' a 'esbuild'
       rollupOptions: {
         output: {
           manualChunks: {
