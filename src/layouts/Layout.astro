@@ -182,11 +182,16 @@ const canonicalURL = new URL(
 			// Función para manejar el botón de volver arriba
 			const handleScrollToTop = () => {
 				const scrollButton = document.getElementById("scroll-to-top");
-				if (!scrollButton) return;
+				const contactSection = document.querySelector("section"); // Selecciona la sección de contacto
+				if (!scrollButton || !contactSection) return;
 
-				// Mostrar/ocultar botón basado en la posición del scroll
+				// Mostrar/ocultar botón basado en la posición del scroll y la sección visible
 				const toggleButton = () => {
-					if (window.scrollY > 500) {
+					const contactRect = contactSection.getBoundingClientRect();
+					const isInContactSection =
+						contactRect.top <= 0 && contactRect.bottom >= 0;
+
+					if (window.scrollY > 500 && !isInContactSection) {
 						scrollButton.classList.remove(
 							"translate-y-20",
 							"opacity-0",
