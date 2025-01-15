@@ -1,8 +1,13 @@
+import node from '@astrojs/node';
 import tailwind from '@astrojs/tailwind';
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://zenith.dev',
+  output: 'server', // Añadido para habilitar SSR
+  adapter: node({   // Añadido para el adaptador Node
+    mode: 'standalone'
+  }),
+  site: 'https://zenithdev8.vercel.app',
   integrations: [tailwind()],
   // Add build optimizations
   build: {
