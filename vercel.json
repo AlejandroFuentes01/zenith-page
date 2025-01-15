@@ -4,8 +4,8 @@
     "devCommand": "npm run dev",
     "framework": "astro",
     "functions": {
-        "api/*.ts": {
-            "runtime": "@vercel/node@18"
+        "api/*": {
+            "runtime": "nodejs@18"
         }
     }
 }
