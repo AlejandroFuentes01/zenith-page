@@ -1,5 +1,4 @@
 ---
-
 ---
 
 <section
@@ -58,7 +57,15 @@
         >
           <img
             src="/heroimagee.webp"
+            srcset="/heroimagee-sm.webp 400w,
+                    /heroimagee.webp 800w"
+            sizes="(max-width: 768px) 400px,
+                   800px"
             alt="Digital Solutions Illustration"
+            width="800"
+            height="500"
+            loading="eager"
+            decoding="async"
             class="w-full h-full object-cover"
           />
           {/* Text overlay for main image */}
@@ -76,7 +83,15 @@
           <div class="relative w-full h-[250px] md:h-[300px]">
             <img
               src="/heroimage22.webp"
+              srcset="/heroimage22-sm.webp 250w,
+                      /heroimage22.webp 300w"
+              sizes="(max-width: 768px) 250px,
+                     300px"
               alt="Experience Digital Solutions"
+              width="300"
+              height="300"
+              loading="eager"
+              decoding="async"
               class="w-full h-full object-cover"
             />
 
