@@ -17,6 +17,7 @@
     "@astrojs/node": "^7.0.4",
     "@astrojs/tailwind": "^5.1.0",
     "@astrojs/vercel": "^7.8.2",
+    "@vercel/speed-insights": "^1.1.0",
     "astro": "^4.15.3",
     "nanostores": "^0.9.5",
     "resend": "^4.1.1",
