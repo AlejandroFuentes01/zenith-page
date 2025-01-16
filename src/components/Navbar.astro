@@ -12,15 +12,17 @@ const menuItems = [
 const currentPath = Astro.url.pathname;
 ---
 
-<nav class="fixed w-full z-[100] py-6 bg-white shadow-sm" id="navbar">
+<nav class="fixed w-full z-[100] py-6 bg-white shadow-sm will-change-transform" id="navbar">
   <div class="container mx-auto px-4 flex justify-between items-center">
     <a href="/" class="flex items-center gap-1 relative z-[110]">
       <img
         src="/Zenith.webp"
         alt="Zenith Logo"
         class="h-8 w-8 object-contain"
+        loading="eager"
+        decoding="async"
       />
-      <span class="text-base font-bold tracking-tight">enith dev8</span>
+      <span class="text-base font-bold">enith dev8</span>
     </a>
 
     {/* Desktop Menu */}
