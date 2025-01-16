@@ -1,74 +1,67 @@
 ---
+// Optimize by moving static content to constants
+const HERO_TITLE = "Transforming Ideas\ninto Digital Solutions";
+const HERO_DESCRIPTION = "With expertise in web and mobile development, we bring your ideas to life using the latest technologies and best practices. Whether you need a responsive website, a high-performance mobile app, or any other digital solution, we deliver results that exceed expectations.";
 ---
 
 <section
-  class="min-h-screen bg-white relative overflow-hidden pt-32 md:pt-32 lg:pt-32 pb-16" id="hero"
+  class="min-h-screen bg-white relative overflow-hidden pt-32 md:pt-32 lg:pt-32 pb-16"
+  id="hero"
 >
-  <div class="container mx-auto px-4">
+  <div class="mx-auto px-4 max-w-7xl">
     <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-      {/* Left Side Content */}
+      {/* Left Side Content - Optimized with fewer wrapper divs */}
       <div class="relative z-20 space-y-8">
-        <div class="overflow-visible animate-fade-in">
-          <h1
-            class="text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.2] tracking-tight animate-slide-up"
-          >
-            Transforming Ideas<br />
-            into Digital Solutions
-          </h1>
-        </div>
+        <h1
+          class="text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.2] tracking-tight animate-slide-up whitespace-pre-line"
+        >
+          {HERO_TITLE}
+        </h1>
         <p
           class="text-gray-600 text-base md:text-lg max-w-xl leading-relaxed animate-fade-in-delay"
         >
-          With expertise in web and mobile development, we bring your ideas to
-          life using the latest technologies and best practices. Whether you
-          need a responsive website, a high-performance mobile app, or any other
-          digital solution, we deliver results that exceed expectations.
+          {HERO_DESCRIPTION}
         </p>
-        <div
-          class="flex flex-col sm:flex-row gap-4 sm:gap-6 animate-fade-in-delay-2"
+        <a
+          href="#contact"
+          class="group inline-flex items-center gap-2 bg-[#C4B5FD] hover:bg-[#C4B5FD]/90 text-black px-6 md:px-8 py-3 md:py-4 rounded-full overflow-hidden transition-all duration-300 hover:pl-4 hover:pr-10 w-fit animate-fade-in-delay-2"
         >
-          <a
-            href="#contact"
-            class="group relative inline-flex items-center gap-2 bg-[#C4B5FD] hover:bg-[#C4B5FD]/90 text-black px-6 md:px-8 py-3 md:py-4 rounded-full overflow-hidden transition-all duration-300 hover:pl-4 hover:pr-10"
+          <span class="relative z-10">Contact Us</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5 transform group-hover:translate-x-1 transition-transform absolute right-6 opacity-0 group-hover:opacity-100"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            aria-hidden="true"
           >
-            <span class="relative z-10">Contact Us</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5 transform group-hover:translate-x-1 transition-transform absolute right-6 opacity-0 group-hover:opacity-100"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                clip-rule="evenodd"></path>
-            </svg>
-          </a>
-        </div>
+            <path
+              fill-rule="evenodd"
+              d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+              clip-rule="evenodd"></path>
+          </svg>
+        </a>
       </div>
 
-      {/* Right Side Images */}
+      {/* Right Side Images - Optimized image loading */}
       <div
         class="relative lg:h-[700px] h-[400px] md:h-[500px] w-full animate-fade-in-right"
       >
-        {/* Main Image */}
         <div
           class="absolute right-0 top-0 w-[85%] h-[400px] md:h-[500px] rounded-3xl overflow-hidden hover:scale-[1.02] transition-transform duration-500 shadow-2xl"
         >
-          <img
-            src="/heroimagee.webp"
-            srcset="/heroimagee-sm.webp 400w,
-                    /heroimagee.webp 800w"
-            sizes="(max-width: 768px) 400px,
-                   800px"
-            alt="Digital Solutions Illustration"
-            width="800"
-            height="500"
-            loading="eager"
-            decoding="async"
-            class="w-full h-full object-cover"
-          />
-          {/* Text overlay for main image */}
+          <picture>
+            <source media="(min-width: 768px)" srcset="/heroimagee.webp">
+            <source media="(max-width: 767px)" srcset="/heroimagee-sm.webp">
+            <img
+              src="/heroimagee.webp"
+              alt="Digital Solutions Illustration"
+              width="800"
+              height="500"
+              loading="eager"
+              decoding="async"
+              class="w-full h-full object-cover"
+            />
+          </picture>
           <div
             class="absolute top-6 right-6 bg-white/90 backdrop-blur-sm px-6 py-3 rounded-lg shadow-lg animate-slide-in-left"
           >
@@ -76,26 +69,23 @@
           </div>
         </div>
 
-        {/* Small Image */}
         <div
           class="absolute -bottom-4 left-0 w-[250px] md:w-[300px] rounded-3xl overflow-hidden shadow-2xl bg-[#FDB813] hover:scale-105 transition-transform duration-500 animate-slide-up"
         >
           <div class="relative w-full h-[250px] md:h-[300px]">
-            <img
-              src="/heroimage22.webp"
-              srcset="/heroimage22-sm.webp 250w,
-                      /heroimage22.webp 300w"
-              sizes="(max-width: 768px) 250px,
-                     300px"
-              alt="Experience Digital Solutions"
-              width="300"
-              height="300"
-              loading="eager"
-              decoding="async"
-              class="w-full h-full object-cover"
-            />
-
-            {/* Text Card */}
+            <picture>
+              <source media="(min-width: 768px)" srcset="/heroimage22.webp">
+              <source media="(max-width: 767px)" srcset="/heroimage22-sm.webp">
+              <img
+                src="/heroimage22.webp"
+                alt="Experience Digital Solutions"
+                width="300"
+                height="300"
+                loading="eager"
+                decoding="async"
+                class="w-full h-full object-cover"
+              />
+            </picture>
             <div
               class="absolute bottom-6 left-6 bg-white/90 backdrop-blur-sm px-4 py-3 rounded-lg shadow-lg animate-fade-in-up"
             >
@@ -109,133 +99,120 @@
     </div>
   </div>
 
-  {/* Background Decorations */}
+  {/* Background Decorations - Optimized with will-change */}
   <div
-    class="absolute top-20 left-0 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"
+    class="absolute top-20 left-0 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob will-change-transform"
+    aria-hidden="true"
   >
   </div>
   <div
-    class="absolute top-40 right-0 w-72 h-72 bg-yellow-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"
+    class="absolute top-40 right-0 w-72 h-72 bg-yellow-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000 will-change-transform"
+    aria-hidden="true"
   >
   </div>
   <div
-    class="absolute bottom-20 left-20 w-72 h-72 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"
+    class="absolute bottom-20 left-20 w-72 h-72 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000 will-change-transform"
+    aria-hidden="true"
   >
   </div>
 </section>
 
 <style>
-  .container {
-    max-width: 1280px;
-  }
-
-  /* Hero specific animations */
-  .animate-slide-up {
-    opacity: 0;
-    animation: slideUp 0.8s ease-out forwards;
-  }
-
-  .animate-fade-in {
-    opacity: 0;
-    animation: fadeIn 0.8s ease-out forwards;
-  }
-
-  .animate-fade-in-delay {
-    opacity: 0;
-    animation: fadeIn 0.8s ease-out forwards;
-    animation-delay: 0.3s;
-  }
-
-  .animate-fade-in-delay-2 {
-    opacity: 0;
-    animation: fadeIn 0.8s ease-out forwards;
-    animation-delay: 0.6s;
-  }
-
-  .animate-fade-in-right {
-    opacity: 0;
-    animation: fadeInRight 1s ease-out forwards;
-    animation-delay: 0.3s;
-  }
-
-  .animate-slide-in-left {
-    opacity: 0;
-    animation: slideInLeft 0.6s ease-out forwards;
-    animation-delay: 1s;
-  }
-
-  .animate-fade-in-up {
-    opacity: 0;
-    animation: fadeInUp 0.6s ease-out forwards;
-    animation-delay: 1.2s;
-  }
-
+  /* Optimized animations with transform instead of opacity where possible */
   @keyframes slideUp {
     from {
+      transform: translate3d(0, 30px, 0);
       opacity: 0;
-      transform: translateY(30px);
     }
     to {
+      transform: translate3d(0, 0, 0);
       opacity: 1;
-      transform: translateY(0);
     }
   }
 
   @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+    to { opacity: 1; }
   }
 
   @keyframes fadeInRight {
     from {
+      transform: translate3d(50px, 0, 0);
       opacity: 0;
-      transform: translateX(50px);
     }
     to {
+      transform: translate3d(0, 0, 0);
       opacity: 1;
-      transform: translateX(0);
     }
   }
 
   @keyframes slideInLeft {
     from {
+      transform: translate3d(30px, 0, 0);
       opacity: 0;
-      transform: translateX(30px);
     }
     to {
+      transform: translate3d(0, 0, 0);
       opacity: 1;
-      transform: translateX(0);
     }
   }
 
   @keyframes fadeInUp {
     from {
+      transform: translate3d(0, 20px, 0);
       opacity: 0;
-      transform: translateY(20px);
     }
     to {
+      transform: translate3d(0, 0, 0);
       opacity: 1;
-      transform: translateY(0);
     }
   }
 
   @keyframes blob {
-    0% {
-      transform: translate(0px, 0px) scale(1);
+    0%, 100% {
+      transform: translate3d(0, 0, 0) scale(1);
     }
     33% {
-      transform: translate(30px, -50px) scale(1.1);
+      transform: translate3d(30px, -50px, 0) scale(1.1);
     }
     66% {
-      transform: translate(-20px, 20px) scale(0.9);
+      transform: translate3d(-20px, 20px, 0) scale(0.9);
     }
-    100% {
-      transform: translate(0px, 0px) scale(1);
-    }
+  }
+
+  /* Base animation classes */
+  .animate-slide-up {
+    opacity: 0;
+    animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-fade-in {
+    opacity: 0;
+    animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-fade-in-delay {
+    opacity: 0;
+    animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.3s;
+  }
+
+  .animate-fade-in-delay-2 {
+    opacity: 0;
+    animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.6s;
+  }
+
+  .animate-fade-in-right {
+    opacity: 0;
+    animation: fadeInRight 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.3s;
+  }
+
+  .animate-slide-in-left {
+    opacity: 0;
+    animation: slideInLeft 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards 1s;
+  }
+
+  .animate-fade-in-up {
+    opacity: 0;
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards 1.2s;
   }
 
   .animate-blob {
