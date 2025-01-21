@@ -1,4 +1,6 @@
 ---
+import LearnMoreButton from "./LearnMoreButton.astro";
+
 const services = [
   {
     title: "Custom Web Development",
@@ -84,11 +86,7 @@ const services = [
                 ))}
               </div>
 
-              <a
-                href="#contact"
-                class="group relative inline-flex items-center gap-2 bg-[#C4B5FD] hover:bg-[#C4B5FD]/90 text-black px-6 py-2.5 rounded-full overflow-hidden transition-all duration-300 hover:pl-4 hover:pr-8"
-              >
-                <span class="relative z-10">Learn More</span>
+              <LearnMoreButton>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   class="h-4 w-4 transform group-hover:translate-x-1 transition-transform absolute right-4 opacity-0 group-hover:opacity-100"

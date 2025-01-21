@@ -1,59 +1,103 @@
 ---
-// ContactButton.astro
+// GetStartedButton.astro
 ---
 
-<button class="contact-button">
+<a href="/contact" class="contact-button">
   <span class="text-container"> Contact Us </span>
   <span class="arrow-circle">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="20"
-      height="20"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-    >
-      <line x1="7" y1="17" x2="17" y2="7"></line>
-      <polyline points="7 7 17 7 17 17"></polyline>
-    </svg>
+      <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="arrow-icon"
+      >
+          <line x1="7" y1="17" x2="17" y2="7"></line>
+          <polyline points="7 7 17 7 17 17"></polyline>
+      </svg>
   </span>
-</button>
+</a>
 
 <style>
   .contact-button {
-    display: flex;
-    align-items: center;
-    border: none;
-    background: none;
-    cursor: pointer;
-    padding: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: -10px;
+      border: none;
+      background: none;
+      cursor: pointer;
+      padding: 0;
+      transition: gap 0.3s ease;
+      text-decoration: none;
   }
 
   .text-container {
-    background-color: #e4d5f7;
-    color: #000;
-    padding: 12px 24px;
-    border-radius: 9999px;
-    font-size: 16px;
-    transition: background-color 0.2s ease;
+      background-color: #c4b5fd;
+      color: #000;
+      padding: 12px 24px;
+      border-radius: 9999px;
+      font-size: 16px;
+      font-weight: normal; /* Cambiado de 500 a normal */
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 2;
   }
 
   .arrow-circle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #e4d5f7;
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    transition: background-color 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #c4b5fd;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 1;
+      transform: translateX(-10px);
   }
 
-  .contact-button:hover .text-container,
+  .arrow-icon {
+      transition: transform 0.3s ease;
+  }
+
+  .contact-button:hover {
+      gap: 0;
+  }
+
+  .contact-button:hover .text-container {
+      background-color: #a78bfa;
+      transform: translateX(-5px);
+      box-shadow: 0 4px 12px rgba(196, 181, 253, 0.3);
+  }
+
   .contact-button:hover .arrow-circle {
-    background-color: #d6c2f2;
+      background-color: #a78bfa;
+      transform: translateX(5px);
+      box-shadow: 0 4px 12px rgba(196, 181, 253, 0.3);
+  }
+
+  .contact-button:hover .arrow-icon {
+      transform: translate(2px, -2px);
+  }
+
+  .contact-button:active .text-container,
+  .contact-button:active .arrow-circle {
+      transform: translateY(1px);
+      box-shadow: 0 2px 8px rgba(196, 181, 253, 0.2);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+      .contact-button,
+      .text-container,
+      .arrow-circle,
+      .arrow-icon {
+          transition: none;
+      }
   }
 </style>

@@ -31,15 +31,19 @@ const links = {
 <footer class="bg-gray-50 border-t border-gray-100">
   <div class="container mx-auto px-4 py-12 md:py-16">
     {/* Main Footer Content */}
-    <div
-      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 mb-8 md:mb-12"
-    >
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 mb-8 md:mb-12">
       {/* Brand and Description */}
       <div class="md:col-span-2 lg:col-span-4">
         <div class="text-center md:text-left space-y-6">
-          <a href="/" class="inline-flex items-center gap-2">
-            <span class="text-3xl font-bold tracking-tight">Z</span>
-            <span class="text-xl font-bold tracking-tight">enith.dev</span>
+          <a href="/" class="flex items-center gap-1 relative z-10 justify-center md:justify-start">
+            <img
+              src="/Zenith.webp"
+              alt="Zenith Logo"
+              class="h-8 w-8 object-contain"
+              loading="eager"
+              decoding="async"
+            />
+            <span class="text-base font-bold">enith dev8</span>
           </a>
           <p class="text-gray-600 text-sm md:text-base leading-relaxed">
             Transforming ideas into exceptional digital experiences. Let's build
@@ -92,9 +96,7 @@ const links = {
         <div class="text-center md:text-left">
           <h3 class="text-lg font-semibold text-gray-900 mb-6">Contact</h3>
           <ul class="space-y-4">
-            <li
-              class="flex items-center gap-3 justify-center md:justify-start text-gray-600"
-            >
+            <li class="flex items-center gap-3 justify-center md:justify-start text-gray-600">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="h-5 w-5 flex-shrink-0"
@@ -111,9 +113,7 @@ const links = {
               </svg>
               <span class="text-sm md:text-base">zenithdev8@gmail.com</span>
             </li>
-            <li
-              class="flex items-center gap-3 justify-center md:justify-start text-gray-600"
-            >
+            <li class="flex items-center gap-3 justify-center md:justify-start text-gray-600">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="h-5 w-5 flex-shrink-0"
@@ -137,23 +137,17 @@ const links = {
 
     {/* Bottom Bar */}
     <div class="border-t border-gray-200 pt-8">
-      <div
-        class="flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left"
-      >
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
         <p class="text-gray-600 text-sm order-2 md:order-1">
           © {currentYear} Zenith.dev. All rights reserved.
         </p>
         <div class="flex gap-4 md:gap-8 order-1 md:order-2">
-          <a
-            href="#"
-            class="text-gray-600 hover:text-primary transition-colors text-sm whitespace-nowrap"
-            >Privacy Policy</a
-          >
-          <a
-            href="#"
-            class="text-gray-600 hover:text-primary transition-colors text-sm whitespace-nowrap"
-            >Terms of Service</a
-          >
+          <a href="#" class="text-gray-600 hover:text-primary transition-colors text-sm whitespace-nowrap">
+            Privacy Policy
+          </a>
+          <a href="#" class="text-gray-600 hover:text-primary transition-colors text-sm whitespace-nowrap">
+            Terms of Service
+          </a>
         </div>
       </div>
     </div>

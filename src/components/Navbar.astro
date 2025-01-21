@@ -1,6 +1,7 @@
 ---
 import { translations } from "../i18n/translations";
 import type { Language } from "../i18n/translations";
+import ContactButton from "./ContactButton.astro";
 
 const menuItems = [
   { text: translations.en.nav.home, href: "/" },
@@ -78,13 +79,7 @@ const currentPath = Astro.url.pathname;
         </div>
       </div>
 
-      <a
-        href="/contact"
-        class="bg-[#C4B5FD] hover:bg-[#C4B5FD]/90 text-black px-6 py-2.5 rounded-full transition-colors nav-link"
-        data-key="contact"
-      >
-        {translations.en.nav.contact}
-      </a>
+      <ContactButton/>
     </div>
 
     {/* Mobile Menu Button */}

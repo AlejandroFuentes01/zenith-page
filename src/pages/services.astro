@@ -1,0 +1,360 @@
+---
+import ContactButton from "../components/ContactButton.astro";
+import Footer from "../components/Footer.astro";
+import Navbar from "../components/Navbar.astro";
+import ReadyToStart from "../components/ReadyToStart.astro";
+import Layout from "../layouts/Layout.astro";
+
+const services = [
+    {
+        id: "web-development",
+        title: "Web Development",
+        description:
+            "Create stunning, high-performance websites and web applications that deliver exceptional user experiences. Our web development services combine cutting-edge technologies with best practices to build scalable, secure, and responsive solutions.",
+        image: "/web.webp",
+        technologies: [
+            "React",
+            "Vue",
+            "Node.js",
+            "TypeScript",
+            "Next.js",
+            "Tailwind CSS",
+        ],
+        features: [
+            {
+                title: "Responsive Design",
+                description:
+                    "Websites that look and work perfectly on all devices, from mobile to desktop.",
+            },
+            {
+                title: "Performance Optimization",
+                description:
+                    "Lightning-fast load times and smooth interactions for the best user experience.",
+            },
+            {
+                title: "SEO-Friendly",
+                description:
+                    "Built with search engine optimization in mind to improve your online visibility.",
+            },
+            {
+                title: "Security First",
+                description:
+                    "Implementing robust security measures to protect your data and users.",
+            },
+        ],
+    },
+    {
+        id: "mobile-development",
+        title: "Mobile Development",
+        description:
+            "Transform your ideas into powerful mobile applications for iOS and Android. We create native and cross-platform apps that provide seamless experiences and drive user engagement across all mobile devices.",
+        image: "/mobile.webp",
+        technologies: [
+            "React Native",
+            "Flutter",
+            "Swift",
+            "Kotlin",
+            "Firebase",
+            "AWS",
+        ],
+        features: [
+            {
+                title: "Cross-Platform",
+                description:
+                    "Build once, deploy everywhere with efficient cross-platform development.",
+            },
+            {
+                title: "Native Performance",
+                description:
+                    "Smooth, fast, and responsive apps that feel truly native on each platform.",
+            },
+            {
+                title: "Offline Support",
+                description:
+                    "Apps that work seamlessly even without an internet connection.",
+            },
+            {
+                title: "Push Notifications",
+                description:
+                    "Engage users with timely and relevant push notifications.",
+            },
+        ],
+    },
+    {
+        id: "ui-ux-design",
+        title: "UI/UX Design",
+        description:
+            "Create intuitive and engaging user experiences that delight your customers. Our design process focuses on understanding user needs and behaviors to create interfaces that are both beautiful and functional.",
+        image: "/uiux.webp",
+        technologies: [
+            "Figma",
+            "Adobe XD",
+            "Sketch",
+            "Principle",
+            "InVision",
+            "Framer",
+        ],
+        features: [
+            {
+                title: "User Research",
+                description:
+                    "Deep understanding of your users' needs, behaviors, and pain points.",
+            },
+            {
+                title: "Wireframing",
+                description:
+                    "Clear and structured layouts that optimize user flows and interactions.",
+            },
+            {
+                title: "Visual Design",
+                description:
+                    "Beautiful and consistent design systems that strengthen your brand.",
+            },
+            {
+                title: "Prototyping",
+                description:
+                    "Interactive prototypes that bring your design to life before development.",
+            },
+        ],
+    },
+    {
+        id: "full-stack-solutions",
+        title: "Full-Stack Solutions",
+        description:
+            "End-to-end development services that cover both frontend and backend needs. We build complete digital solutions that seamlessly integrate all components of your application.",
+        image: "/fullstack.webp",
+        technologies: [
+            "MongoDB",
+            "PostgreSQL",
+            "Express.js",
+            "GraphQL",
+            "Docker",
+            "Kubernetes",
+        ],
+        features: [
+            {
+                title: "API Development",
+                description:
+                    "Robust and scalable APIs that power your applications efficiently.",
+            },
+            {
+                title: "Database Design",
+                description:
+                    "Optimized database structures for reliable data management.",
+            },
+            {
+                title: "Cloud Integration",
+                description:
+                    "Seamless deployment and scaling with cloud services.",
+            },
+            {
+                title: "Security",
+                description:
+                    "Comprehensive security measures to protect your application and data.",
+            },
+        ],
+    },
+];
+---
+
+<Layout
+    title="Our Services - Expert Digital Solutions"
+    description="Discover our comprehensive range of digital services including web development, mobile apps, UI/UX design, and full-stack solutions."
+>
+    <Navbar />
+    <main class="bg-gradient-to-b from-purple-50 via-white to-purple-50">
+        {/* Hero Section */}
+        <section
+            class="min-h-[50vh] flex items-center relative pt-32 pb-16 md:pt-40 md:pb-24"
+        >
+            <div class="container mx-auto px-4">
+                <div class="max-w-4xl mx-auto text-center">
+                    <h1
+                        class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight"
+                    >
+                        Discover How Our Services<br />Transform Your Ideas
+                    </h1>
+                    <p
+                        class="text-gray-600 text-lg md:text-xl mb-8 leading-relaxed"
+                    >
+                        From concept to deployment, we provide end-to-end
+                        digital solutions that help your business thrive in the
+                        digital age.
+                    </p>
+                    <div class="flex justify-center">
+                        <ContactButton />
+                    </div>
+                </div>
+            </div>
+            {/* Decorative background elements */}
+            <div
+                class="absolute top-1/2 left-0 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-50 -z-10"
+            >
+            </div>
+            <div
+                class="absolute bottom-0 right-0 w-72 h-72 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-50 -z-10"
+            >
+            </div>
+        </section>
+
+        {/* Services Grid */}
+        <section class="container mx-auto px-4 py-12 md:py-16">
+            <div class="grid gap-12 md:gap-16">
+                {
+                    services.map((service, index) => (
+                        <div class="service-card bg-white rounded-[2.5rem] shadow-lg overflow-hidden transform hover:scale-[1.02] transition-all duration-500">
+                            <div class="grid md:grid-cols-2 gap-8 p-8 md:p-12">
+                                {/* Content */}
+                                <div class="space-y-6 md:space-y-8">
+                                    <h2 class="text-3xl md:text-4xl font-bold">
+                                        {service.title}
+                                    </h2>
+                                    <p class="text-gray-600 leading-relaxed">
+                                        {service.description}
+                                    </p>
+
+                                    {/* Technologies */}
+                                    <div class="space-y-4">
+                                        <h3 class="text-xl font-semibold">
+                                            Technologies We Use
+                                        </h3>
+                                        <div class="flex flex-wrap gap-2">
+                                            {service.technologies.map(
+                                                (tech) => (
+                                                    <span class="px-4 py-2 bg-purple-50 text-primary rounded-full text-sm">
+                                                        {tech}
+                                                    </span>
+                                                ),
+                                            )}
+                                        </div>
+                                    </div>
+
+                                    {/* Features */}
+                                    <div class="space-y-4">
+                                        <h3 class="text-xl font-semibold">
+                                            Key Features
+                                        </h3>
+                                        <div class="grid sm:grid-cols-2 gap-4">
+                                            {service.features.map((feature) => (
+                                                <div class="p-4 bg-gray-50 rounded-xl">
+                                                    <h4 class="font-medium mb-2">
+                                                        {feature.title}
+                                                    </h4>
+                                                    <p class="text-sm text-gray-600">
+                                                        {feature.description}
+                                                    </p>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                    <div class="pt-4">
+                                        <ContactButton />
+                                    </div>
+                                </div>
+
+                                {/* Image - Hidden on mobile, shown on md and up */}
+                                <div class="hidden md:block relative h-[600px] md:h-[700px] lg:h-[800px] rounded-2xl overflow-hidden order-first md:order-last">
+                                    <div class="absolute inset-0">
+                                        <img
+                                            src={service.image}
+                                            alt={service.title}
+                                            class="w-full h-full object-cover object-center"
+                                            loading={index === 0 ? "eager" : "lazy"}
+                                        />
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                                    </div>
+                                </div>
+
+                                {/* Mobile Image - Smaller version for mobile only */}
+                                <div class="md:hidden relative h-[300px] rounded-2xl overflow-hidden">
+                                    <div class="absolute inset-0">
+                                        <img
+                                            src={service.image}
+                                            alt={service.title}
+                                            class="w-full h-full object-cover object-center"
+                                            loading={index === 0 ? "eager" : "lazy"}
+                                        />
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </section>
+
+        {/* Ready To Start Section */}
+        <ReadyToStart />
+    </main>
+    <Footer />
+</Layout>
+
+<style>
+    .container {
+        max-width: 1280px;
+    }
+
+    /* Service Card Animations */
+    .service-card {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Stagger animation for service cards */
+    .service-card:nth-child(1) {
+        animation-delay: 0.1s;
+    }
+    .service-card:nth-child(2) {
+        animation-delay: 0.3s;
+    }
+    .service-card:nth-child(3) {
+        animation-delay: 0.5s;
+    }
+    .service-card:nth-child(4) {
+        animation-delay: 0.7s;
+    }
+
+    /* Hover Effects */
+    .service-card:hover {
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Image hover effect */
+    .service-card img {
+        transition: transform 0.6s ease;
+    }
+    
+    .service-card:hover img {
+        transform: scale(1.05);
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        .service-card {
+            animation-delay: 0.1s;
+        }
+    }
+
+    /* Accessibility */
+    @media (prefers-reduced-motion: reduce) {
+        .service-card {
+            animation: none;
+            opacity: 1;
+            transform: none;
+        }
+    }
+</style>
